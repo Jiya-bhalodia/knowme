@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jiya Bhalodia | AI & ML Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFBFC; --blush:#FBE9EE; --rose:#F3CFD9; --accent:#B8486B; --accent-soft:#D9809C;
+  --ink:#3B2A33; --muted:#7A6670; --line:#F0DCE3; --card:#FFFFFF;
+  --serif:'Fraunces',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.15;margin-bottom:36px;letter-spacing:-.01em}
+h3{font-family:var(--serif);font-weight:500;font-size:1.25rem;line-height:1.3}
+p.lead{color:var(--muted);max-width:60ch}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:20;backdrop-filter:blur(14px);background:rgba(255,251,252,.78);border-bottom:1px solid transparent;transition:border-color .3s}
+nav.scrolled{border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--serif);font-size:1.2rem;font-weight:600}
+.links{display:flex;gap:26px;font-size:.92rem;color:var(--muted)}
+.links a{position:relative;padding:4px 0;transition:color .2s}
+.links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--accent);transition:width .3s}
+.links a:hover,.links a.active{color:var(--ink)}
+.links a:hover::after,.links a.active::after{width:100%}
+.burger{display:none;background:none;border:0;font-size:1.6rem;cursor:pointer;color:var(--ink)}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:110px 0 70px;position:relative;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.7;z-index:0;animation:drift 14s ease-in-out infinite alternate}
+.b1{width:420px;height:420px;background:var(--rose);top:-80px;right:-80px}
+.b2{width:320px;height:320px;background:var(--blush);bottom:-60px;left:-80px;animation-delay:-6s}
+@keyframes drift{to{transform:translate(40px,30px) scale(1.12)}}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.25fr .85fr;gap:56px;align-items:center}
+.hello{display:inline-flex;align-items:center;gap:8px;background:var(--blush);color:var(--accent);padding:6px 14px;border-radius:99px;font-size:.88rem;font-weight:500;margin-bottom:22px}
+.hello i{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.3;transform:scale(1.5)}}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:18px}
+.role{font-size:1.15rem;color:var(--muted);min-height:1.9em;margin-bottom:18px}
+.role b{color:var(--accent);font-weight:600}
+.caret{display:inline-block;width:2px;height:1.1em;background:var(--accent);vertical-align:-3px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{padding:12px 24px;border-radius:99px;font-weight:500;font-size:.95rem;border:1.5px solid var(--accent);transition:transform .25s,background .25s,color .25s,box-shadow .25s;cursor:pointer;font-family:inherit}
+.btn.fill{background:var(--accent);color:#fff}
+.btn.fill:hover{box-shadow:0 10px 24px -8px rgba(184,72,107,.6);transform:translateY(-2px)}
+.btn.line{background:transparent;color:var(--accent)}
+.btn.line:hover{background:var(--blush);transform:translateY(-2px)}
+.photo{position:relative;justify-self:center;width:min(340px,80vw);aspect-ratio:4/5}
+.photo::before{content:"";position:absolute;inset:14px -14px -14px 14px;border-radius:44% 56% 52% 48%/48% 44% 56% 52%;background:var(--rose);animation:morph 9s ease-in-out infinite alternate}
+.photo .frame{position:relative;width:100%;height:100%;border-radius:44% 56% 52% 48%/48% 44% 56% 52%;overflow:hidden;background:var(--blush);animation:morph 9s ease-in-out infinite alternate;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:4rem;color:var(--accent-soft);box-shadow:0 24px 50px -24px rgba(184,72,107,.45)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@keyframes morph{50%{border-radius:55% 45% 44% 56%/56% 52% 48% 44%}100%{border-radius:48% 52% 58% 42%/44% 56% 44% 56%}}
+.rise{opacity:0;transform:translateY(18px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+.d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}.d4{animation-delay:.55s}.d5{animation-delay:.7s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* stats */
+.stats{padding:0 0 30px}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px 12px}
+.stat{text-align:center;padding:0 8px}
+.stat+.stat{border-left:1px solid var(--line)}
+.stat strong{display:block;font-family:var(--serif);font-size:2rem;font-weight:500;color:var(--accent)}
+.stat span{font-size:.85rem;color:var(--muted)}
+
+/* about / education */
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start}
+.edu{display:grid;gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 24px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 36px -22px rgba(184,72,107,.45);border-color:var(--rose)}
+.card small{color:var(--muted);display:block}
+.tag{display:inline-block;font-size:.8rem;padding:3px 11px;border-radius:99px;background:var(--blush);color:var(--accent);font-weight:500}
+
+/* skills */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.tab{border:1px solid var(--line);background:var(--card);padding:9px 20px;border-radius:99px;font:500 .92rem var(--sans);color:var(--muted);cursor:pointer;transition:all .25s}
+.tab:hover{border-color:var(--accent-soft);color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:10px;min-height:110px}
+.chip{background:var(--blush);padding:8px 18px;border-radius:99px;font-size:.92rem;opacity:0;transform:scale(.92);animation:pop .4s forwards}
+@keyframes pop{to{opacity:1;transform:none}}
+.langs{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px 22px;color:var(--muted);font-size:.93rem}
+.langs b{color:var(--ink)}
+
+/* projects */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.proj{display:flex;flex-direction:column;gap:12px;padding:26px}
+.proj .top{height:6px;width:44px;border-radius:9px;background:linear-gradient(90deg,var(--accent),var(--rose))}
+.proj p{color:var(--muted);font-size:.93rem;flex:1}
+.stack{display:flex;flex-wrap:wrap;gap:6px}
+.stack span{font-size:.76rem;padding:2px 10px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+.visit{color:var(--accent);font-weight:500;font-size:.92rem;display:inline-flex;gap:6px;transition:gap .25s}
+.visit:hover{gap:12px}
+
+/* achievements */
+.timeline{position:relative;display:grid;gap:18px;padding-left:28px}
+.timeline::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:var(--rose)}
+.t{position:relative}
+.t::before{content:"";position:absolute;left:-28px;top:26px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);transition:background .3s}
+.t:hover::before{background:var(--accent)}
+.t p{color:var(--muted);font-size:.93rem;margin-top:6px}
+.t .head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+
+/* leadership */
+.lead-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.lead-grid p{color:var(--muted);font-size:.93rem;margin-top:8px}
+.lead-grid .tag{margin-bottom:10px}
+
+/* contact */
+.contact{background:var(--blush);border-radius:36px;text-align:center;padding:72px 24px;margin-bottom:60px}
+.contact h2{margin-bottom:12px}
+.contact p{color:var(--muted);margin:0 auto 28px;max-width:46ch}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 0 36px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:880px){
+  .hero .wrap,.about{grid-template-columns:1fr}
+  .photo{order:-1;width:min(260px,70vw)}
+  .grid{grid-template-columns:1fr 1fr}
+  .stat-row{grid-template-columns:1fr 1fr;row-gap:22px}
+  .stat:nth-child(3){border-left:0}
+}
+@media(max-width:640px){
+  section{padding:70px 0}
+  .links{position:absolute;top:64px;left:0;right:0;background:var(--bg);flex-direction:column;padding:12px 24px 20px;gap:14px;border-bottom:1px solid var(--line);display:none}
+  .links.open{display:flex}
+  .burger{display:block}
+  .grid,.lead-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rise,.rv,.chip{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="#home" class="logo">Jiya Bhalodia</a>
+    <button class="burger" id="burger" aria-label="Toggle menu">☰</button>
+    <div class="links" id="links">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
+      <a href="#achievements">Achievements</a><a href="#leadership">Leadership</a><a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="wrap">
+    <div>
+      <span class="hello rise d1"><i></i>Open to internships and collaborations</span>
+      <h1 class="rise d2">Hi, I'm Jiya Bhalodia.</h1>
+      <p class="role rise d3">I'm a <b id="typed"></b><span class="caret"></span></p>
+      <p class="lead rise d4">Third-year Computer Science student building real-world AI and machine learning solutions, from dementia screening to geospatial data. I enjoy hackathons, leading teams and exploring new technology.</p>
+      <div class="btns rise d5">
+        <a class="btn fill" href="#projects">View my work</a>
+        <a class="btn line" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="photo rise d3">
+      <div class="frame">JB<img src="image.jpeg" alt="Portrait of Jiya Bhalodia" onerror="this.remove()"></div>
+    </div>
+  </div>
+</header>
+
+<div class="stats rv">
+  <div class="wrap"><div class="stat-row">
+    <div class="stat"><strong data-n="8.46" data-d="2">0</strong><span>CGPA</span></div>
+    <div class="stat"><strong data-n="3">0</strong><span>Major projects</span></div>
+    <div class="stat"><strong data-n="50" data-s="+">0</strong><span>Members led in NeuroCloud</span></div>
+    <div class="stat"><strong data-n="5" data-s="+">0</strong><span>Events anchored</span></div>
+  </div></div>
+</div>
+
+<section id="about">
+  <div class="wrap about">
+    <div class="rv">
+      <h2>Building AI that solves real problems.</h2>
+      <p class="lead">I'm drawn to Artificial Intelligence and Machine Learning, and I learn best by shipping things. My work spans Python, deep learning, computer vision, NLP and LLM-powered apps, backed by experience leading teams and hosting events.</p>
+    </div>
+    <div class="edu rv">
+      <div class="card"><span class="tag">2024 – Present</span><h3 style="margin-top:10px">B.Tech, Computer Science and Engineering</h3><small>Rajarambapu Institute of Technology · CGPA 8.46</small></div>
+      <div class="card"><span class="tag">2023</span><h3 style="margin-top:10px">Senior Secondary (XII)</h3><small>Ganpatrao Arwade College · Maharashtra State Board · 76.00%</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" style="background:linear-gradient(var(--bg),var(--blush) 50%,var(--bg))">
+  <div class="wrap rv">
+    <h2>Skills and tools</h2>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="chips" id="chips" aria-live="polite"></div>
+    <div class="langs">
+      <span><b>English</b> Fluent</span><span><b>Hindi</b> Fluent</span><span><b>Gujarati</b> Native</span><span><b>Marathi</b> Intermediate</span><span><b>German</b> A1 (95/100)</span>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2 class="rv">Projects</h2>
+    <div class="grid">
+      <article class="card proj rv"><div class="top"></div><h3>CogniScreen</h3>
+        <p>AI-powered web app for preliminary dementia and cognitive impairment screening, inspired by ACE-III. Flask backend with Supabase for login and longitudinal results, Groq Whisper for speech analysis and Llama 3.3 70B for scoring open-ended answers.</p>
+        <div class="stack"><span>Flask</span><span>Supabase</span><span>Whisper</span><span>Llama 3.3</span><span>Netlify</span><span>Render</span></div>
+        <a class="visit" href="https://cogni-screen.netlify.app/" target="_blank" rel="noopener">Live site <span>↗</span></a></article>
+      <article class="card proj rv"><div class="top"></div><h3>BHUMI-X</h3>
+        <p>Geospatial platform that harmonizes multi-source urban land and cadastral data: CRS normalization, spatial matching, topology validation, conflict detection and confidence scoring, plus AI building detection and footprint segmentation.</p>
+        <div class="stack"><span>Geospatial</span><span>Computer Vision</span><span>Semantic similarity</span></div>
+        <a class="visit" href="https://bhumi-x.netlify.app/" target="_blank" rel="noopener">Live site <span>↗</span></a></article>
+      <article class="card proj rv"><div class="top"></div><h3>Water-Level Indicator</h3>
+        <p>Real-time water level monitor using an Arduino Nano and HC-SR04 ultrasonic sensor. It measures the distance to the water surface, calculates the level and shows the reading on an OLED display.</p>
+        <div class="stack"><span>Arduino Nano</span><span>HC-SR04</span><span>OLED</span><span>Embedded</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="achievements" style="background:linear-gradient(var(--bg),var(--blush) 50%,var(--bg))">
+  <div class="wrap">
+    <h2 class="rv">Achievements, hackathons and publications</h2>
+    <div class="timeline">
+      <div class="card t rv"><div class="head"><h3>Smart India Hackathon 2025</h3><span class="tag">Top 6</span></div><p>Placed in the top 6 and held the 1st waitlisted position for the national finals.</p></div>
+      <div class="card t rv"><div class="head"><h3>Adaptive Quantum Error Mesh (AQEM)</h3><span class="tag">IEEE paper</span></div><p>Presented research at GIT, Belgaum on a lightweight mesh architecture that predicts qubit instability and dynamically re-routes quantum states.</p></div>
+      <div class="card t rv"><div class="head"><h3>Winner, Waltronics 2025</h3><span class="tag">State level</span></div><p>Won the poster presentation at Walchand College of Engineering with "AI &amp; Robotics: Beyond Human Limits".</p></div>
+      <div class="card t rv"><div class="head"><h3>Top 20 Finalist, Azure Xplore 2K25</h3><span class="tag">WCE MLSC</span></div><p>Reached the top 20 in the Hack4Azure hackathon after learning Azure fundamentals and Virtual Machines.</p></div>
+      <div class="card t rv"><div class="head"><h3>2nd Rank, International Women's Day</h3><span class="tag">Project presentation</span></div><p>Organized by Rajarambapu Institute of Technology, IEEE Student Branch and Women in Engineering Society.</p></div>
+      <div class="card t rv"><div class="head"><h3>Finalist, Electrovert 2024</h3><span class="tag">National level</span></div><p>Selected as a finalist at Walchand College of Engineering in ideation, debate and innovation challenges.</p></div>
+      <div class="card t rv"><div class="head"><h3>MLH HackWeek 2025</h3><span class="tag">Participant</span></div><p>Week-long international hackathon exploring AI tools, Figma and prototyping.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="leadership">
+  <div class="wrap">
+    <h2 class="rv">Leadership and responsibilities</h2>
+    <div class="lead-grid">
+      <div class="card rv"><span class="tag">Team Lead</span><h3>Smart India Hackathon 2026</h3><p>Leading a team building automated integration and harmonization of multi-source geospatial data for land records. Cleared the internal selection round.</p></div>
+      <div class="card rv"><span class="tag">Vice President</span><h3>NeuroCloud</h3><p>Lead a 50-member technical club. Organized AI/ML and Cloud workshops and launched the college's first Duo &amp; Squad Day.</p></div>
+      <div class="card rv"><span class="tag">Event Anchor</span><h3>5+ college events</h3><p>Anchored events including ICSMART 2026, an international conference.</p></div>
+      <div class="card rv"><span class="tag">Technical Co-Head</span><h3>CSESA</h3><p>Planned and coordinated technical activities, including a mini hackathon and other college events.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:20px">
+  <div class="wrap"><div class="contact rv">
+    <h2>Let's build something together.</h2>
+    <p>I'm looking for opportunities in AI and machine learning. Email me or find me on LinkedIn and GitHub.</p>
+    <div class="btns" style="justify-content:center;margin:0">
+      <a class="btn fill" href="mailto:jiyadilipbhalodia@gmail.com">Email me</a>
+      <a class="btn line" href="https://linkedin.com/in/jiya-bhalodia-708053327/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn line" href="https://github.com/Jiya-bhalodia" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div></div>
+</section>
+<footer>© <span id="yr"></span> Jiya Bhalodia</footer>
+
+<script>
+// typing roles
+const roles=["Machine Learning enthusiast","Hackathon finalist","Team lead and event anchor","AI project builder"];
+const t=document.getElementById('typed');let ri=0,ci=0,del=false;
+function type(){const w=roles[ri];t.textContent=w.slice(0,ci);
+  if(!del&&ci<w.length){ci++;setTimeout(type,70)}
+  else if(!del){del=true;setTimeout(type,1500)}
+  else if(ci>0){ci--;setTimeout(type,35)}
+  else{del=false;ri=(ri+1)%roles.length;setTimeout(type,300)}}
+type();
+
+// nav
+const nav=document.getElementById('nav'),links=document.getElementById('links');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10),{passive:true});
+document.getElementById('burger').onclick=()=>links.classList.toggle('open');
+links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
+const secs=[...document.querySelectorAll('section[id]')];
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.querySelectorAll('a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(s=>spy.observe(s));
+
+// skills tabs
+const skills={
+ "Programming":["C","Python","Java","JavaScript","HTML/CSS","MySQL","MongoDB","Object-Oriented Programming","Data Structures","Git and GitHub","REST APIs"],
+ "AI, ML and Data":["PyTorch","TensorFlow","NumPy","Pandas","Matplotlib","Machine Learning","Neural Networks","Computer Vision","RAG","NLP","Generative AI/LLMs","Hugging Face","Speech AI"],
+ "Tools":["Jupyter Notebook","Google Colab","Supabase","Microsoft Azure","Virtual Machines","Anaconda","VS Code","Figma","Canva"],
+ "Professional":["Leadership","Teamwork","Problem Solving","Public Speaking","Presentation","Event Management"]};
+const tabs=document.getElementById('tabs'),chips=document.getElementById('chips');
+function show(k){
+  [...tabs.children].forEach(b=>b.setAttribute('aria-selected',b.textContent===k));
+  chips.innerHTML='';
+  skills[k].forEach((s,i)=>{const c=document.createElement('span');c.className='chip';c.textContent=s;c.style.animationDelay=i*45+'ms';chips.appendChild(c)});
+}
+Object.keys(skills).forEach(k=>{const b=document.createElement('button');b.className='tab';b.role='tab';b.textContent=k;b.onclick=()=>show(k);tabs.appendChild(b)});
+show("AI, ML and Data");
+
+// reveal + counters
+function count(el){const n=+el.dataset.n,d=+(el.dataset.d||0),s=el.dataset.s||'',st=performance.now();
+  (function f(now){const p=Math.min((now-st)/1200,1),e=1-Math.pow(1-p,3);el.textContent=(n*e).toFixed(d)+(p===1?s:'');if(p<1)requestAnimationFrame(f)})(st)}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('[data-n]').forEach(count);io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*80+'ms';io.observe(el)});
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
